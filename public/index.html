@@ -1,0 +1,123 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+        <title>wasmnet: WebAssembly</title>
+		<style>
+			.content {
+				padding-top: 12px;
+				padding-bottom: 12px;
+			}
+
+			.inner {
+				padding-top: 12px;
+				padding-bottom: 12px;
+			}
+
+			.pool {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				display: none;
+			}
+
+			.forLoop {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				display: none;
+			}
+
+			.peerJS {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				display: none;
+			}
+
+			.webGL {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				display: none;
+			}
+
+			.gameCanvas {
+				padding-top: 12px;
+				padding-bottom: 12px;
+				width: 800px;
+				height: 600px;
+				background-color: black;
+			}
+		</style>
+		<script src="js/wasm_exec.js"></script>
+		<script src="js/wasm_events.js"></script>
+		<script src="js/wasm_init.js"></script>
+		<script src="js/three.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>
+				<a href="/">wasmnet</a>
+			</h1>
+			<address>Go + WebAssembly</address>
+		</header>
+		<div class="content">
+			<div class="inner">
+				<button onClick="helloWorld('');" type="submit" id="sayHello" title="Hello World">Hello</button>
+			</div>
+			<div class="inner">
+				<button onClick="launchForLoop('');" type="submit" id="launchForLoop" title="For-Loop Listener">For-Loop</button>
+			</div>
+			<div class="inner">
+				<button onClick="launchPool('');" type="submit" id="launchPool" title="Worker-Pool">Pool</button>
+			</div>
+			<div class="inner">
+				<button onClick="launchPeerJS('');" type="submit" id="launchPeerJS" title="PeerJS Client">PeerJS</button>
+			</div>
+			<div class="inner">
+				<button onClick="launchWebGL('');" type="submit" id="launchWebGL" title="WebGL">WebGL</button>
+			</div>
+		</div>
+
+		<div class="pool" id="poolDiv">
+			<h2>Worker-Pool Demo:</h2>
+			<address>Concurrent task-runner example.</address>
+			<div class="inner">
+				<button onClick="poolHandler('');" type="submit" id="runPoolButton" disabled>Run</button>
+			</div>
+			<div class="inner">
+				<textarea id="poolOutput" name="poolOutput" rows="32" cols="100" disabled></textarea>
+			</div>
+		</div>
+
+		<div class="forLoop" id="forLoopDiv">
+			<h2>JavaScript Events Demo:</h2>
+			<address>For-Loop listener example.</address>
+			<div class="inner">
+				<input type="text" id="forIterationValue" placeholder="Iteration amount?" />
+				<button onClick="forHandler('forIterationValue');" type="submit" id="runForButton" disabled>Run</button>
+			</div>
+			<div class="inner">
+				<textarea id="forInput" name="forInput" rows="4" cols="50" disabled></textarea>
+			</div>
+			<div class="inner">
+				<textarea id="forOutput" name="forOutput" rows="16" cols="50" disabled></textarea>
+			</div>
+		</div>
+
+		<div class="peerJS" id="peerJSDiv">
+			<h2>PeerJS Communication Demo:</h2>
+			<address>Peer-to-peer communication example with peerJS.</address>
+			<div class="inner">
+				<input type="text" id="targetRoom" placeholder="Room ID" />
+				<button onClick="peerJSHandler('targetRoom');" type="submit" id="runPeerJSButton" disabled>Join</button>
+			</div>
+		</div>
+
+		<div class="webGL" id="webGLDiv">
+			<h2>WebGL Demo:</h2>
+			<address>Implementation of webGL with ThreeJS.</address>
+			<div class="inner">
+				<div class="gameCanvas" id="gameCanvas">
+					<script src="js/game.js"></script>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
